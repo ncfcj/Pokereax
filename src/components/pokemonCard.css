@@ -1,0 +1,66 @@
+.pokemonCard {
+    height: 28rem;
+    width: 20rem;
+    border: 2px solid black;
+    border-radius: 8px;
+}
+
+.cardHeader{
+    height: 25%;
+    background-color: red;
+    border-radius: 6px 6px 0px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pokemonName {
+    font-family: 'PokemonGB';
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    font-size: small;
+}
+
+.pokeballBelt {
+    height: 3%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+}
+
+.pokeballButton {
+    background-color: black;
+    width: 12%;
+    height: 300%;
+    transform: translateY(-25%);
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.whiteButton {
+    width: 70%;
+    height: 70%;
+    background-color: white;
+    border-radius: 30px;
+}
+
+.cardBody {
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardBottom {
+    height: 22%;
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    align-items: center;
+}
+

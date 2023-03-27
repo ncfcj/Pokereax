@@ -67,3 +67,10 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+@font-face {
+  font-family: "PokemonGb";
+  src: local("PokemonGb"),
+   url("./assets/fonts/PokemonGb.ttf") format("truetype");
+  font-weight: bold;
+}
