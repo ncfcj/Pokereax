@@ -1,3 +1,5 @@
+import "./SvgIcon.css"
+
 interface IProps {
   iconPath: string;
   wrapperStyle?: React.CSSProperties;

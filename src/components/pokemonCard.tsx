@@ -6,6 +6,7 @@ import IPokemonUrl from '../interfaces/IPokemonUrl'
 import IPokemonData from '../interfaces/IPokemonData'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { PokeballLoading } from './pokeballLoading'
 
 interface PokemonCard {
     PokemonAPIUrl : IPokemonUrl
@@ -20,19 +21,19 @@ export const PokemonCard = (props : PokemonCard) => {
         return str.toUpperCase() + Name.slice(1); 
     }
 
-    useEffect( () => {
-        const getPokemonData = async (url : IPokemonUrl) => {
-            const res = await axios.get(url.url);
-            console.log(res.data);
-            setPokemonData(res.data);
-            setLoading(false);
-        }
+    const getPokemonData = async (url : IPokemonUrl) => {
+        const res = await axios.get(url.url);
+        setPokemonData(res.data);
+        setLoading(false);
+    }
 
+    useEffect( () => {
         getPokemonData(props.PokemonAPIUrl);
     }, []);
 
     if(isLoading)
-        return <div className="App">Loading...</div>;
+        return <PokeballLoading></PokeballLoading>;
+        
     return (
         <div className="pokemonCard">
             <div className='cardHeader'>
