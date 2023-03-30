@@ -12,7 +12,7 @@ export const PokemonType = (props : PokemonTypeProps) => {
     }
     
     const recuperarCaminhoImagemTipo = (tipo : string) => {
-        return `../src/assets/types/${tipo}.svg`;
+        return `types/${tipo}.svg`;
     }
     
     const iconStyle: React.CSSProperties = {

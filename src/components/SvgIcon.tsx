@@ -9,22 +9,9 @@ interface IProps {
 
 export const SvgIcon = (props: IProps) => {
   const { iconPath, wrapperStyle } = props;
-
-  const isDEV = import.meta.env.DEV;
-  const baseURL = import.meta.env.BASE_URL;
-
-  console.log(baseURL);
-
-  const environmentPath = () => {
-    if (isDEV == false)
-      return "https://pokereax.netlify.app/"
-    else
-      return baseURL;
-  }
-
   return (
     <>
-      <img src={environmentPath() + iconPath} style={wrapperStyle}></img>
+      <img src={iconPath} style={wrapperStyle}></img>
     </>
   );
 }

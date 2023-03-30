@@ -7,6 +7,7 @@ import IPokemonUrl from './interfaces/IPokemonUrl';
 export const App = () => {
   const [pokemonUrlList, setPokemonUrlList] = useState<IPokemonUrl[]>([] as IPokemonUrl[]);
   const [generation, setGeneration] = useState<number>(0); 
+  const [randomNumber, setRandomNumber] = useState<number>(0);
 
   const getOffset = (generation : number) => {
       switch (generation) {
@@ -43,6 +44,11 @@ export const App = () => {
   }
 
   const getPokemonData = async () => {
+    if(generation == 0){
+        setPokemonUrlList([{ name: "", url :`https://pokeapi.co/api/v2/pokemon/pikachu`}]);
+        return;
+    }   
+
     const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=${getPokemonQuantityByGeneration(generation)}&offset=${getOffset(generation)}`);
     setPokemonUrlList(res.data.results);
   }

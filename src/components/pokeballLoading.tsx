@@ -2,7 +2,6 @@ import "./pokeballLoading.css"
 import { SvgIcon } from "./SvgIcon";
 
 interface IPokeballLoading {
-
 }
 
 export const PokeballLoading = (props : IPokeballLoading) => {
@@ -19,16 +18,16 @@ const getPokeball = () => {
 
     switch (randInt) {
         case 1:
-            return "../src/assets/pokeballs/Pokeball.png"
+            return "pokeballs/Pokeball.png"
 
         case 2:
-            return "../src/assets/pokeballs/Greatball.png"
+            return "pokeballs/Greatball.png"
 
         case 3:
-            return "../src/assets/pokeballs/Ultraball.png"
+            return "pokeballs/Ultraball.png"
 
         case 4:
-            return "../src/assets/pokeballs/Masterball.png"
+            return "pokeballs/Masterball.png"
 
         default:
             return "";

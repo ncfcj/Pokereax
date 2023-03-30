@@ -38,7 +38,7 @@ export const PokemonCard = (props : PokemonCard) => {
         <div className="pokemonCard">
             <div className='cardHeader'>
                <label className='pokemonName'>
-                   {capitalizeFirstWord(props.PokemonAPIUrl.name)}
+                   {capitalizeFirstWord(pokemonData.name)}
                </label>
            </div>
            <div className='pokeballBelt'>
