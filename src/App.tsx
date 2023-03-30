@@ -83,7 +83,6 @@ export const App = () => {
 
   useEffect(() => { 
     getPokemonData();
-    console.log(generation);
   }, [generation])
 
   return (
