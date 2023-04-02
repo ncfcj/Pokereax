@@ -1,4 +1,4 @@
-import './pokemonCard.css'
+import './style/pokemonCard.css'
 import { PokemonType } from './pokemonType'
 import { PokemonImage } from './pokemonImage'
 import IPokemonType from '../interfaces/IPokemonType'
@@ -14,7 +14,7 @@ interface PokemonCard {
 
 export const PokemonCard = (props : PokemonCard) => {
     const [pokemonData, setPokemonData] = useState<IPokemonData>({ } as IPokemonData);
-    const [isLoading, setLoading] = useState(true);
+    const [isLoading, setLoading] = useState<boolean>(true);
 
     const capitalizeFirstWord = (Name : string) => {
         const str = Name.charAt(0);

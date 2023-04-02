@@ -1,4 +1,4 @@
-import "./SvgIcon.css"
+import "./style/SvgIcon.css"
 
 
 interface IProps {

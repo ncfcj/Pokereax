@@ -1,4 +1,4 @@
-import "./pokemonType.css"
+import "./style/pokemonType.css"
 import { SvgIcon } from "./SvgIcon"
 
 interface PokemonTypeProps {

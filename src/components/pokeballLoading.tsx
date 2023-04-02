@@ -1,4 +1,4 @@
-import "./pokeballLoading.css"
+import "./style/pokeballLoading.css"
 import { SvgIcon } from "./SvgIcon";
 
 interface IPokeballLoading {

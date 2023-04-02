@@ -1,6 +1,6 @@
 import { PokemonCard } from './pokemonCard'
 import IPokemonUrl from '../interfaces/IPokemonUrl';
-import "./pokemonCardList.css"
+import "./style/pokemonCardList.css"
 
 interface IPokemonCardList {
     PokemonUrlList : IPokemonUrl[],

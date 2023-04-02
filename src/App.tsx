@@ -3,11 +3,12 @@ import { PokemonCardList } from './components/pokemonCardList'
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import IPokemonUrl from './interfaces/IPokemonUrl';
+import { PokedexHeader } from './components/pokedexHeader';
+import { PokedexFooter } from './components/pokedexFooter';
 
 export const App = () => {
   const [pokemonUrlList, setPokemonUrlList] = useState<IPokemonUrl[]>([] as IPokemonUrl[]);
   const [generation, setGeneration] = useState<number>(0); 
-  const [randomNumber, setRandomNumber] = useState<number>(0);
 
   const getOffset = (generation : number) => {
       switch (generation) {
@@ -87,13 +88,30 @@ export const App = () => {
         }
   }
 
+  const previousGeneration = () => {
+    if(generation == 0)
+        return;
+
+    setGeneration(generation - 1);
+  }
+
+  const nextGeneration = () => {
+    if(generation == 9)
+        return;
+    setGeneration(generation + 1);
+  }
+
   useEffect(() => { 
     getPokemonData();
   }, [generation])
 
   return (
     <div className="App">
-      <select onChange={(x) => setGeneration(parseInt(x.target.value))}>
+      <PokedexHeader></PokedexHeader>
+      <select 
+        value={generation} 
+        onChange={(x) => setGeneration(parseInt(x.target.value))}
+        className='generationSelect'>
         <option value={0}>Selecione uma geração</option>
         <option value={1}>Geração 1 - Kanto</option>
         <option value={2}>Geração 2 - Johto</option>
@@ -105,7 +123,16 @@ export const App = () => {
         <option value={8}>Geração 8 - Galar</option>
         <option value={9}>Geração 9 - Paldea</option>
       </select>
-      <PokemonCardList PokemonUrlList={pokemonUrlList}></PokemonCardList>
+      <div className='CardListContainer'>
+        <button 
+            onClick={previousGeneration} 
+            className='leftButton genButton'>{"<"}</button>
+        <PokemonCardList PokemonUrlList={pokemonUrlList}></PokemonCardList>
+        <button 
+            onClick={nextGeneration}
+            className='rightButton genButton'>{">"}</button>
+      </div>
+      <PokedexFooter></PokedexFooter>
     </div>
   )
 }

@@ -1,7 +1,4 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 
@@ -39,4 +36,45 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.CardListContainer {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 5rem;
+  margin: auto;
+  padding: 0 5% 0 5%;
+  text-align: center;
+}
+
+.generationSelect {
+  margin-bottom: 1rem;
+}
+
+.genButton{
+  height: 5rem;
+  width: 10rem;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(21rem);
+  color: white;
+  font-size: larger;
+  margin-right: 1rem;;
+}
+
+.leftButton{
+  background-color: black;
+}
+
+.rightButton{
+  background-color: red;
+}
+
+@media (max-width: 700px){
+  .CardListContainer {
+    padding: 0 2% 0 2%;
+    gap: 0;
+  }
 }

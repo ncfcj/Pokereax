@@ -1,4 +1,4 @@
-import "./pokemonImage.css"
+import "./style/pokemonImage.css"
 
 interface PokemonImage {
     imagePath : string

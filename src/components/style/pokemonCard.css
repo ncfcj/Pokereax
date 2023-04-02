@@ -1,9 +1,10 @@
 .pokemonCard {
-    height: 28rem;
-    width: 20rem;
+    height: 30rem;
+    width: 24rem;
     border: 2px solid black;
     border-radius: 8px;
-    flex: 1 0 20%;
+    flex: 1 0 24%;
+    max-width: 22rem;
 }
 
 .cardHeader{
@@ -19,7 +20,7 @@
     font-family: 'PokemonGB';
     color: white;
     text-shadow: 1px 1px 1px black;
-    font-size: small;
+    font-size: medium;
 }
 
 .pokeballBelt {
@@ -63,5 +64,17 @@
     justify-content: center;
     gap: 0.5rem;
     align-items: center;
+}
+
+@media (max-width: 1000px) {
+    .pokemonCard {
+        flex: 33%;
+    }
+}
+
+@media (max-width: 700px) {
+    .pokemonCard {
+        flex: 50%;
+    }
 }
 
