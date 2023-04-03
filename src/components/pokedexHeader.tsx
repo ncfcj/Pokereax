@@ -1,12 +1,28 @@
+import { useEffect, useState } from "react"
 import "./style/pokedexHeader.css"
-interface IPokedexHeader {
 
-}
+export const PokedexHeader = () => {
+    const [isScrolled, setScrolled] = useState(false);
 
-export const PokedexHeader = (props : IPokedexHeader) => {
+    const handleScroll = () => {
+        if(window.pageYOffset > 80) {
+          setScrolled(true)
+        } else {
+          setScrolled(false)
+        }
+    }
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll, { passive: true });
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [])
+    
     return (
-        <div className="headerDiv">
-            <div className="header"></div>
+        <div className={`headerDiv`}>
+            <div className={`header ${isScrolled ? 'header-scrolled' : ""}`}></div>
             <div className="navbar"></div>
         </div>
     )

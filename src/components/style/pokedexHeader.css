@@ -1,17 +1,27 @@
 .header {
     top: 0;
     width: 100%;
-    height: 8rem;
     background-color: red;
+    height: 80%;
+    transition: height 1s;
 }
 
 .navbar {
     top: 0;
     width: 100%;
-    height: 2rem;
+    height: 20%;
     background-color: black;
 }
 
 .headerDiv {
     margin-bottom: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 9999999;
+    min-width: 100%;
+    height: 8rem;
+}
+
+.header-scrolled {
+    height: 50%;
 }

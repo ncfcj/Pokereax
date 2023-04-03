@@ -1,14 +1,14 @@
 import './App.css'
 import { PokemonCardList } from './components/pokemonCardList'
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import {useEffect, useState } from 'react';
 import IPokemonUrl from './interfaces/IPokemonUrl';
 import { PokedexHeader } from './components/pokedexHeader';
 import { PokedexFooter } from './components/pokedexFooter';
 
 export const App = () => {
   const [pokemonUrlList, setPokemonUrlList] = useState<IPokemonUrl[]>([] as IPokemonUrl[]);
-  const [generation, setGeneration] = useState<number>(0); 
+  const [generation, setGeneration] = useState<number>(0);
 
   const getOffset = (generation : number) => {
       switch (generation) {
@@ -132,7 +132,7 @@ export const App = () => {
             onClick={nextGeneration}
             className='rightButton genButton'>{">"}</button>
       </div>
-      <PokedexFooter></PokedexFooter>
+      <PokedexFooter isGenZero={generation == 0}></PokedexFooter>
     </div>
   )
 }

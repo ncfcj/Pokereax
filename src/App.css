@@ -1,6 +1,9 @@
 #root {
   text-align: center;
+  min-width: 100%;
+  min-height: 100vh;
 }
+
 
 .logo {
   height: 6em;
@@ -45,6 +48,7 @@
   margin: auto;
   padding: 0 5% 0 5%;
   text-align: center;
+  justify-content: center;
 }
 
 .generationSelect {
