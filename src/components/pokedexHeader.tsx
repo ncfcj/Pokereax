@@ -22,7 +22,9 @@ export const PokedexHeader = () => {
     
     return (
         <div className={`headerDiv`}>
-            <div className={`header ${isScrolled ? 'header-scrolled' : ""}`}></div>
+            <div className={`header ${isScrolled ? 'header-scrolled' : ""}`}>
+                <h1 className="headerTitle">PokeReax</h1>
+            </div>
             <div className="navbar"></div>
         </div>
     )

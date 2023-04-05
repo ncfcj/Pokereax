@@ -76,9 +76,23 @@
   background-color: red;
 }
 
+.siteBody{
+  min-height: 80%;
+}
+
 @media (max-width: 700px){
   .CardListContainer {
     padding: 0 2% 0 2%;
     gap: 0;
+  }
+}
+
+@media(max-width: 478px){
+  .genButton{
+    display: none;
+  }
+
+  .CardListContainer{
+    margin-bottom: 2rem;
   }
 }

@@ -4,6 +4,8 @@
     background-color: red;
     height: 80%;
     transition: height 1s;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
 }
 
 .navbar {
@@ -24,4 +26,15 @@
 
 .header-scrolled {
     height: 50%;
+}
+
+.headerTitle{
+    font-family: Sword;
+    margin: 0;
+    text-shadow: 4px 1px black;
+    color: whitesmoke;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }

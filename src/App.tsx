@@ -108,29 +108,31 @@ export const App = () => {
   return (
     <div className="App">
       <PokedexHeader></PokedexHeader>
-      <select 
-        value={generation} 
-        onChange={(x) => setGeneration(parseInt(x.target.value))}
-        className='generationSelect'>
-        <option value={0}>Selecione uma geração</option>
-        <option value={1}>Geração 1 - Kanto</option>
-        <option value={2}>Geração 2 - Johto</option>
-        <option value={3}>Geração 3 - Hoenn</option>
-        <option value={4}>Geração 4 - Sinnoh</option>
-        <option value={5}>Geração 5 - Unova</option>
-        <option value={6}>Geração 6 - Kalos</option>
-        <option value={7}>Geração 7 - Alola</option>
-        <option value={8}>Geração 8 - Galar</option>
-        <option value={9}>Geração 9 - Paldea</option>
-      </select>
-      <div className='CardListContainer'>
-        <button 
-            onClick={previousGeneration} 
-            className='leftButton genButton'>{"<"}</button>
-        <PokemonCardList PokemonUrlList={pokemonUrlList}></PokemonCardList>
-        <button 
-            onClick={nextGeneration}
-            className='rightButton genButton'>{">"}</button>
+      <div className='siteBody'>
+        <select 
+          value={generation} 
+          onChange={(x) => setGeneration(parseInt(x.target.value))}
+          className='generationSelect'>
+          <option value={0}>Selecione uma geração</option>
+          <option value={1}>Geração 1 - Kanto</option>
+          <option value={2}>Geração 2 - Johto</option>
+          <option value={3}>Geração 3 - Hoenn</option>
+          <option value={4}>Geração 4 - Sinnoh</option>
+          <option value={5}>Geração 5 - Unova</option>
+          <option value={6}>Geração 6 - Kalos</option>
+          <option value={7}>Geração 7 - Alola</option>
+          <option value={8}>Geração 8 - Galar</option>
+          <option value={9}>Geração 9 - Paldea</option>
+        </select>
+        <div className='CardListContainer'>
+          <button 
+              onClick={previousGeneration} 
+              className='leftButton genButton'>{"<"}</button>
+          <PokemonCardList PokemonUrlList={pokemonUrlList}></PokemonCardList>
+          <button 
+              onClick={nextGeneration}
+              className='rightButton genButton'>{">"}</button>
+        </div>
       </div>
       <PokedexFooter isGenZero={generation == 0}></PokedexFooter>
     </div>

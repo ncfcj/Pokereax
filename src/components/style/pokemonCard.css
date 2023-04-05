@@ -78,3 +78,9 @@
     }
 }
 
+@media(max-width: 350px){
+    .pokemonCard{
+        max-width: 300px;
+    }
+}
+
