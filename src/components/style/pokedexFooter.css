@@ -1,6 +1,30 @@
 .footer{
-    height: 10rem;
+    height: 5rem;
     width: 100%;
     background-color: black;
     margin-top: 5rem;
+    display: flex;
+    flex-direction: row wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.linkColor {
+    color: white;
+}
+
+.linkColor:hover {
+    color: red;
+}
+
+.myName{
+    color: white;
+}
+
+@media (max-width: 330px){
+    .footer{
+        min-width: 330px;
+        position: absolute;
+        bottom: 0;
+    }
 }
