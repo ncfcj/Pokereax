@@ -7,6 +7,7 @@ import IPokemonData from '../interfaces/IPokemonData'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { PokeballLoading } from './pokeballLoading'
+import IPokemonSpecies from '../interfaces/IPokemonSpecies'
 
 interface PokemonCard {
     PokemonAPIUrl : IPokemonUrl
@@ -15,6 +16,7 @@ interface PokemonCard {
 export const PokemonCard = (props : PokemonCard) => {
     const [pokemonData, setPokemonData] = useState<IPokemonData>({ } as IPokemonData);
     const [isLoading, setLoading] = useState<boolean>(true);
+    const [pokemonSpeciesData, setPokemonSpeciesData] = useState<IPokemonSpecies>({ } as IPokemonSpecies);
 
     const capitalizeFirstWord = (Name : string) => {
         const str = Name.charAt(0);
@@ -24,6 +26,13 @@ export const PokemonCard = (props : PokemonCard) => {
     const getPokemonData = async (url : IPokemonUrl) => {
         const res = await axios.get(url.url);
         setPokemonData(res.data);
+        getPokemonSpeciesData(res.data.species);
+        setLoading(false);
+    }
+
+    const getPokemonSpeciesData = async (url : IPokemonUrl) => {
+        const res = await axios.get(url.url);
+        setPokemonSpeciesData(res.data);
         setLoading(false);
     }
 
@@ -35,7 +44,7 @@ export const PokemonCard = (props : PokemonCard) => {
         return <PokeballLoading></PokeballLoading>;
         
     return (
-        <div className="pokemonCard">
+        <div className={`pokemonCard ${pokemonSpeciesData.is_legendary || pokemonSpeciesData.is_mythical ? "legendary" : ""}`}>
             <div className='cardHeader'>
                <label className='pokemonName'>
                    {capitalizeFirstWord(pokemonData.name)}

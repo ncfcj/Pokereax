@@ -8,22 +8,18 @@ interface IPokedexFooter {
 export const PokedexFooter = (props : IPokedexFooter) => {
     const footerStyle : React.CSSProperties = {
         position: "absolute",
-        bottom: "0"
-    }
-
-    const gitHubIconStyle : React.CSSProperties = {
-        width: "1rem",
-        height: "1rem"
+        bottom: "0",
+        height: "16%"
     }
 
     return (
         <div className="footer" style={props.isGenZero ? footerStyle : {} as React.CSSProperties}>
             <div className="footerChild">
-                <h4>
-                    <SvgIcon wrapperStyle={gitHubIconStyle} iconPath="/github-mark-white.svg"></SvgIcon>
-                    <a className="linkColor" href="https://github.com/ncjr1"> Check out my GitHub</a> 
-                </h4>
-            </div>
+                <img className="gitHubIcon" 
+                    src="/github-mark-white.svg"></img>
+                <a className="linkColor" 
+                    href="https://github.com/ncjr1"> Check out my GitHub</a>  
+            </div>  
         </div>
     )
 }

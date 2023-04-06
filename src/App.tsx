@@ -9,6 +9,7 @@ import { PokedexFooter } from './components/pokedexFooter';
 export const App = () => {
   const [pokemonUrlList, setPokemonUrlList] = useState<IPokemonUrl[]>([] as IPokemonUrl[]);
   const [generation, setGeneration] = useState<number>(0);
+  const totalPokemonCount = 1008;
 
   const getOffset = (generation : number) => {
       switch (generation) {
@@ -46,7 +47,7 @@ export const App = () => {
 
   const getPokemonData = async () => {
     if(generation == 0){
-        setPokemonUrlList([{ name: "", url :`https://pokeapi.co/api/v2/pokemon/pikachu`}]);
+        setPokemonUrlList([{ name: "", url :`https://pokeapi.co/api/v2/pokemon/${Math.round(Math.random() * totalPokemonCount) + 1}`}]);
         return;
     }   
 

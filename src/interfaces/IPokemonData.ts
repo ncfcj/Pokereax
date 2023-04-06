@@ -23,7 +23,7 @@ interface IPokemonData {
     name: string,
     order: number,
     past_types: any[],
-    species: IPokemonSpecies,
+    species: IPokemonUrl,
     sprites: IPokemonSprites,
     stats : IPokemonStats[],
     types : IPokemonType[],

@@ -4,7 +4,7 @@
     background-color: black;
     margin-top: 5rem;
     display: flex;
-    flex-direction: row wrap;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
 }
@@ -21,10 +21,30 @@
     color: white;
 }
 
+.footerChild{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.gitHubIcon {
+    transform: scale(0.3);
+    width: 30%;
+}
+
 @media (max-width: 330px){
     .footer{
         min-width: 330px;
         position: absolute;
         bottom: 0;
+    }
+}
+
+@media (max-width: 900px) {
+    .gitHubIcon {
+        width: 23%;
+        transform: scale(0.3);
     }
 }
