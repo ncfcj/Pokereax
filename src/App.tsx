@@ -1,141 +1,28 @@
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './App.css'
-import { PokemonCardList } from './components/pokemonCardList'
-import axios from 'axios';
-import {useEffect, useState } from 'react';
-import IPokemonUrl from './interfaces/IPokemonUrl';
 import { PokedexHeader } from './components/pokedexHeader';
-import { PokedexFooter } from './components/pokedexFooter';
+import { PokemonBodyGenerationList } from './components/pokemonBodyGenerationList';
+import { PokemonDescription } from './components/pokemonDescription';
+import { ErrorPage } from './components/errorPage';
 
 export const App = () => {
-  const [pokemonUrlList, setPokemonUrlList] = useState<IPokemonUrl[]>([] as IPokemonUrl[]);
-  const [generation, setGeneration] = useState<number>(0);
-  const totalPokemonCount = 1008;
-
-  const getOffset = (generation : number) => {
-      switch (generation) {
-          case 1:
-              return 0;
-          
-          case 2:
-              return 151;
-          
-          case 3:
-              return 251;
-          
-          case 4:
-              return 386;
-  
-          case 5:
-              return 493;
-  
-          case 6:
-              return 649;
-          
-          case 7:
-              return 721;
-          
-          case 8:
-              return 809;
-          
-          case 9:
-              return 905;
-  
-          default:
-              return 0;
-      }
-  }
-
-  const getPokemonData = async () => {
-    if(generation == 0){
-        setPokemonUrlList([{ name: "", url :`https://pokeapi.co/api/v2/pokemon/${Math.round(Math.random() * totalPokemonCount) + 1}`}]);
-        return;
-    }   
-
-    const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=${getPokemonQuantityByGeneration(generation)}&offset=${getOffset(generation)}`);
-    setPokemonUrlList(res.data.results);
-  }
-
-  const getPokemonQuantityByGeneration = (generation : number) => {
-        switch (generation) {
-            case 1:
-                return 151;
-
-            case 2:
-                return 100;
-
-            case 3:
-                return 135;
-
-            case 4:
-                return 107;
-
-            case 5:
-                return 156;
-
-            case 6:
-                return 72;
-
-            case 7:
-                return 88;
-
-            case 8:
-                return 96;
-
-            case 9:
-                return 105;
-
-            default:
-                return 0;
+    const router = createBrowserRouter([
+        {
+            path: "/",
+            element: <PokemonBodyGenerationList/>,
+            errorElement: <ErrorPage />,
+        },
+        {
+            path: "/pokemon/:pokemonName",
+            element: <PokemonDescription/>,
+            errorElement: <ErrorPage />
         }
-  }
+      ]);
 
-  const previousGeneration = () => {
-    if(generation == 0)
-        return;
-
-    setGeneration(generation - 1);
-  }
-
-  const nextGeneration = () => {
-    if(generation == 9)
-        return;
-    setGeneration(generation + 1);
-  }
-
-  useEffect(() => { 
-    getPokemonData();
-  }, [generation])
-
-  return (
-    <div className="App">
-      <PokedexHeader></PokedexHeader>
-      <div className='siteBody'>
-        <select 
-          value={generation} 
-          onChange={(x) => setGeneration(parseInt(x.target.value))}
-          className='generationSelect'>
-          <option value={0}>Selecione uma geração</option>
-          <option value={1}>Geração 1 - Kanto</option>
-          <option value={2}>Geração 2 - Johto</option>
-          <option value={3}>Geração 3 - Hoenn</option>
-          <option value={4}>Geração 4 - Sinnoh</option>
-          <option value={5}>Geração 5 - Unova</option>
-          <option value={6}>Geração 6 - Kalos</option>
-          <option value={7}>Geração 7 - Alola</option>
-          <option value={8}>Geração 8 - Galar</option>
-          <option value={9}>Geração 9 - Paldea</option>
-        </select>
-        <div className='CardListContainer'>
-          <button 
-              onClick={previousGeneration} 
-              className='leftButton genButton'>{"<"}</button>
-          <PokemonCardList PokemonUrlList={pokemonUrlList}></PokemonCardList>
-          <button 
-              onClick={nextGeneration}
-              className='rightButton genButton'>{">"}</button>
+    return (
+        <div className="App">
+            <PokedexHeader></PokedexHeader>
+            <RouterProvider router={router} />
         </div>
-      </div>
-      <PokedexFooter isGenZero={generation == 0}></PokedexFooter>
-    </div>
-  )
+    )
 }
