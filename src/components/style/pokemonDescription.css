@@ -1,0 +1,123 @@
+.pokemonDescription {
+    display: flex;
+    flex-flow: row nowrap;
+    background-color: gray;
+    height: 60vh;
+    width: 64%;
+    border: 1px solid black;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.pokemonDescriptionStats {
+    display: flex;
+    flex-flow: row nowrap;
+    background-color: white;
+    height: 45%;
+    width: 55%;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin: 0.5%;
+}
+
+.siteBody{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    height: 100%;
+}
+
+.container{
+    height: 100%;
+}
+
+.pokemonTitle{
+    font-family: PokemonGb;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    margin: 0.5%;
+    color: black;
+    width: 20%;
+    background-color: whitesmoke;
+    max-height: 45%;
+    border-radius: 5px;
+}
+
+.title{
+    font-size: smaller;
+    padding-top: 1rem;
+}
+
+@media (max-width: 1024px){
+    .pokemonTitle{
+        width: 30%;
+        max-height: 45%;
+    }
+
+    .title{
+        padding-top: 0;
+    }
+
+    .pokemonDescriptionStats {
+        height: 30%;
+        width: 70%;
+    }
+}
+
+@media (max-width: 843px){
+    .title{
+        font-size: 70%;
+        padding-top: 0;
+    }
+}
+
+@media (max-width: 768px){
+    .pokemonTitle{
+        width: 40%;
+        max-height: 45%;
+    }
+}
+
+@media (max-width: 425px){
+    .pokemonDescription {
+        width: 95%;
+    }
+
+    .pokemonTitle{
+        width: 45%;
+        max-height: 30%;
+    }
+
+    .title{
+        font-size: 60%;
+        padding-top: 0;
+    }
+}
+
+@media (max-width: 375px){
+    .pokemonTitle{
+        width: 100%;
+        max-height: 45%;
+    }
+
+    .title{
+        font-size: 60%;
+        padding-top: 0;
+    }
+}
+
+@media (max-width: 320px){
+    .pokemonTitle{
+        width: 100%;
+        max-height: 40%;
+    }
+
+    .title{
+        font-size: 60%;
+        padding-top: 0;
+    }
+    
+}

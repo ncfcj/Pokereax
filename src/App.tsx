@@ -1,6 +1,5 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './App.css'
-import { PokedexHeader } from './components/pokedexHeader';
 import { PokemonBodyGenerationList } from './components/pokemonBodyGenerationList';
 import { PokemonDescription } from './components/pokemonDescription';
 import { ErrorPage } from './components/errorPage';
@@ -21,7 +20,6 @@ export const App = () => {
 
     return (
         <div className="App">
-            <PokedexHeader></PokedexHeader>
             <RouterProvider router={router} />
         </div>
     )

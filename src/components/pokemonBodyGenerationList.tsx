@@ -4,11 +4,16 @@ import "./style/pokemonBodyGenerationList.css"
 import IPokemonUrl from "../interfaces/IPokemonUrl";
 import axios from "axios";
 import { PokedexFooter } from "./pokedexFooter";
+import { PokedexHeader } from "./pokedexHeader";
+import { useLocation } from "react-router-dom";
 
 export const PokemonBodyGenerationList = () => {
     const [pokemonUrlList, setPokemonUrlList] = useState<IPokemonUrl[]>([] as IPokemonUrl[]);
     const [generation, setGeneration] = useState<number>(0);
     const totalPokemonCount = 1008;
+
+    const location = useLocation();
+    const locationGeneration = location.state?.generation;
     
     const getPokemonData = async () => {
         if(generation == 0){
@@ -99,12 +104,13 @@ export const PokemonBodyGenerationList = () => {
     }
 
     useEffect(() => { 
-      getPokemonData();
+        getPokemonData();
     }, [generation])
 
     return (
         <div>
-            <div className='siteBody'>
+            <PokedexHeader></PokedexHeader>
+            <div className='cardListBody'>
                 <select 
                   value={generation} 
                   onChange={(x) => setGeneration(parseInt(x.target.value))}

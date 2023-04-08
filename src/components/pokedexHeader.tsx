@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import "./style/pokedexHeader.css"
+import { Link } from 'react-router-dom'
 
 export const PokedexHeader = () => {
     const [isScrolled, setScrolled] = useState(false);
@@ -23,7 +24,9 @@ export const PokedexHeader = () => {
     return (
         <div className={`headerDiv`}>
             <div className={`header ${isScrolled ? 'header-scrolled' : ""}`}>
-                <h1 className="headerTitle">PokeReax</h1>
+                <Link to={"/"} state={{generation : 0}}>
+                    <h1 className="headerTitle">PokeReax</h1>
+                </Link>
             </div>
             <div className="navbar"></div>
         </div>

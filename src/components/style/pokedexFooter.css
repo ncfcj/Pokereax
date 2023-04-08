@@ -34,9 +34,9 @@
     width: 30%;
 }
 
-@media (max-width: 330px){
+@media (max-width: 320px){
     .footer{
-        min-width: 330px;
+        min-width: 320px;
         position: absolute;
         bottom: 0;
     }

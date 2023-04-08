@@ -1,15 +1,17 @@
-import { SvgIcon } from "./SvgIcon"
+import React from "react"
 import "./style/pokedexFooter.css"
 
 interface IPokedexFooter {
-    isGenZero : boolean
+    isGenZero : boolean,
+    margin? : number,
 }
 
 export const PokedexFooter = (props : IPokedexFooter) => {
     const footerStyle : React.CSSProperties = {
         position: "absolute",
         bottom: "0",
-        height: "16%"
+        height: "16%",
+        margin: `${props.margin != undefined ? props.margin : 0}`
     }
 
     return (

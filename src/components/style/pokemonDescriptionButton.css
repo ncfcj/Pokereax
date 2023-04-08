@@ -1,0 +1,92 @@
+.previousPokemon{
+    width: 18%;
+}
+
+.nextPokemon{
+    width: 18%;
+}
+
+.pokemonButton{
+    font-family: PokemonGb;
+    color: white;
+    max-width: 80%;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.previous{
+    background-color: black;
+    border: 1px solid gray;
+}
+
+.next{
+    background-color: red;
+    border: 1px solid black;
+}
+
+.name{
+    font-size: 70%;
+}
+
+@media (max-width: 1024px){
+    .name{
+        font-size: 70%;
+    }
+}
+
+@media (max-width: 843px){
+    .name{
+        font-size: 70%;
+    }
+}
+
+@media (max-width: 768px){
+    .name{
+        font-size: 50%;
+    }
+}
+
+@media (max-width: 425px){
+    .pokemonButton{
+        width: 20%;
+        height: 10%;
+    }
+
+    .pokemonButton PokemonImage {
+        display: none;
+    }
+
+    .name {
+        display: none;
+    }
+}
+
+@media (max-width: 375px){
+    .pokemonButton{
+        width: 10%;
+        height: 10%;
+    }
+
+    .pokemonButton PokemonImage {
+        display: none;
+    }
+
+    .name {
+        display: none;
+    }
+}
+
+@media (max-width: 320px){
+    .pokemonButton{
+        width: 10%;
+        height: 10%;
+    }
+
+    .pokemonButton PokemonImage {
+        display: none;
+    }
+
+    .name {
+        display: none;
+    }
+}
