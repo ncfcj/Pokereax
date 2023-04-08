@@ -16,10 +16,15 @@ interface PokemonCard {
 }
 
 export const PokemonCard = (props : PokemonCard) => {
+
+    //#region States
     const [pokemonData, setPokemonData] = useState<IPokemonData>({ } as IPokemonData);
     const [isLoading, setLoading] = useState<boolean>(true);
     const [pokemonSpeciesData, setPokemonSpeciesData] = useState<IPokemonSpecies>({ } as IPokemonSpecies);
+    const [randomNumber, setRandomNumber] = useState<number>(0);
+    //#endregion
 
+    //#region Methods
     const getPokemonData = async (url : IPokemonUrl) => {
         const res = await axios.get(url.url);
         setPokemonData(res.data);
@@ -32,16 +37,18 @@ export const PokemonCard = (props : PokemonCard) => {
         setPokemonSpeciesData(res.data);
         setLoading(false);
     }
+    //#endregion
 
     useEffect( () => {
         getPokemonData(props.PokemonAPIUrl);
+        setRandomNumber(Math.floor((Math.random() * 300) + 1));
     }, []);
 
     if(isLoading)
         return <PokeballLoading></PokeballLoading>;
         
     return (
-        <Link to={`/pokemon/${pokemonData.name}`} state={{ data : pokemonData, species : pokemonSpeciesData}} className={`pokemonCard ${pokemonSpeciesData.is_legendary ? "legendary" : "" } ${pokemonSpeciesData.is_mythical ? "mythical" : ""}`}>
+        <Link to={`/pokemon/${pokemonData.name}`} state={{ data : pokemonData, species : pokemonSpeciesData}} className={`pokemonCard ${randomNumber >= 99 && randomNumber <= 100 ? "shiny" : ""} ${pokemonSpeciesData.is_legendary ? "legendary" : "" } ${pokemonSpeciesData.is_mythical ? "mythical" : ""}`}>
             <PokemonCardHeader PokemonName={pokemonData.name}></PokemonCardHeader>
             <div className='pokeballBelt'>
                 <div className='pokeballButton'>
@@ -50,7 +57,7 @@ export const PokemonCard = (props : PokemonCard) => {
                 </div>
             </div>
             <div className='cardBody'>
-                <PokemonImage imagePath={pokemonData.sprites.front_default}></PokemonImage>
+                <PokemonImage imagePath={randomNumber >= 99 && randomNumber <= 100 ? pokemonData.sprites.front_shiny : pokemonData.sprites.front_default}></PokemonImage>
             </div>
             <div className='cardBottom'>
                 {pokemonData.types.map((type: IPokemonType) => {

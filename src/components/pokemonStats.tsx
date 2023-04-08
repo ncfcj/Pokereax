@@ -1,22 +1,14 @@
-import { Bar, BarChart, Cell, LabelList, Legend, ResponsiveContainer, Tooltip, XAxis } from "recharts"
+import { Bar, BarChart, LabelList, Legend, ResponsiveContainer, Tooltip, XAxis } from "recharts"
 import IPokemonStats from "../interfaces/IPokemonStats"
 import { useEffect, useState } from "react"
 import { IPokemonStatsData } from "../interfaces/IPokemonStatsData"
-
+import "./style/pokemonStats.css"
 interface IPokemonStatsProps {
     pokemonStats : IPokemonStats[]
 }
 
 export const PokemonStats = (props: IPokemonStatsProps) => {
     const [data, setData] = useState<IPokemonStatsData[]>([] as IPokemonStatsData[])
-
-    const capitalizeFirstWord = (Name : string) => {
-        if(Name == undefined)
-            return "";
-    
-        const str = Name.charAt(0);
-        return str.toUpperCase() + Name.slice(1); 
-    }
 
     const formatStatName = (statName : string) => {
         switch (statName) {
@@ -83,7 +75,7 @@ export const PokemonStats = (props: IPokemonStatsProps) => {
 
         setData(statArray);
         console.log(statArray);
-    }
+    }    
 
     useEffect(() => {
         mapPokemonStats();
@@ -92,13 +84,31 @@ export const PokemonStats = (props: IPokemonStatsProps) => {
     return (
     <ResponsiveContainer>
         <BarChart data={data}>
-            <Bar dataKey="base_stat" fill="">
+            <Bar dataKey="base_stat">
                 <LabelList dataKey="base_stat" style={{ textAnchor: 'middle', fontSize: '80%', fill: 'white' }}/>
             </Bar>
-            <XAxis dataKey="statName"/>
-            <Tooltip labelFormatter={(name) => capitalizeFirstWord(name)} />
+            <XAxis dataKey="statName" style={{ color: 'black', fontFamily: 'PokemonGb', fontSize: "0.5rem"}}/>
+            <Tooltip content={<CustomTooltip/>} cursor={false}/>
             <Legend formatter={() => "Base Stats"}/>
         </BarChart>
     </ResponsiveContainer>
     )
 }
+
+interface ICustomTooltip  {
+    active? : boolean, 
+    payload? : any, 
+    label? : string
+}
+
+const CustomTooltip = (props : ICustomTooltip) => {
+    if (props.active && props.payload && props.payload.length) {
+      return (
+        <div className="custom-tooltip">
+          <p className="label">{`${props.label} : ${props.payload[0].value}`}</p>
+        </div>
+      );
+    }
+  
+    return null;
+};

@@ -1,8 +1,9 @@
 .pokemonDescription {
+    row-gap: 1px;
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     background-color: gray;
-    height: 60vh;
+    min-height: 60vh;
     width: 64%;
     border: 1px solid black;
     border-radius: 4px;
@@ -13,8 +14,8 @@
     display: flex;
     flex-flow: row nowrap;
     background-color: white;
-    height: 45%;
-    width: 55%;
+    height: 50%;
+    width: 50%;
     border: 1px solid black;
     border-radius: 4px;
     margin: 0.5%;
@@ -42,13 +43,71 @@
     color: black;
     width: 20%;
     background-color: whitesmoke;
-    max-height: 45%;
+    height: 50%;
     border-radius: 5px;
+}
+
+.pokemonTypes{
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 4px;
+    height: 50%;
+    width: 100%;
+    border: 1px solid black;
+}
+
+.aboutPokemon{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: start;
+    align-items: flex-start;
+    height: 50%;
+    width: 26%;
+    margin: 0.5%;
+    gap: 1%;
 }
 
 .title{
     font-size: smaller;
     padding-top: 1rem;
+}
+
+.legendary{
+    animation: legendaryCard 5s linear infinite;
+    box-shadow: #dfc187 0px 54px 55px, #feffde 0px -12px 30px, #b69957 0px 4px 6px, #ece7b3 0px 12px 13px, #eed292 0px -3px 5px;
+}
+
+.mythical{
+    animation: mythicalCard 5s linear infinite;
+    box-shadow: #7b0001 0px 54px 55px, #ff2928 0px -12px 30px, #603479 0px 4px 6px, #212529 0px 12px 13px, #d93c6b 0px -3px 5px;
+}
+
+.shiny { 
+    animation: shinyCard 5s linear infinite;
+    box-shadow: #011f4b 0px 30px 55px, #03396c 0px -5px 30px, #005b96 0px 1px 6px, #6497b1 0px 5px 13px, #b3cde0 0px 0px 5px;
+}
+
+.pokemonTrivia{
+    display: flex;
+    flex-flow: row nowrap;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 4px;
+    width: 100%;
+    height: 50%;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.pokemonTrivia p{
+    font-family: PokemonGb;
+    font-size: 0.5rem;
+    color: black;
 }
 
 @media (max-width: 1024px){
@@ -78,6 +137,10 @@
     .pokemonTitle{
         width: 40%;
         max-height: 45%;
+    }
+
+    .pokemonDescriptionStats{
+        width: 60%;
     }
 }
 
@@ -121,3 +184,58 @@
     }
     
 }
+
+@keyframes legendaryCard {
+    0% {
+        box-shadow: #dfc187 0px 30px 55px, #feffde 0px -5px 30px, #b69957 0px 1px 6px, #ece7b3 0px 5px 13px, #eed292 0px 0px 5px;
+    }
+    25%{
+        box-shadow: #dfc187 0px 15px 60px, #feffde 0px -30px 32px, #b69957 0px 4px 6px, #ece7b3 0px 10px 11px, #eed292 0px -8px 5px;
+    }
+    50%{
+        box-shadow: #dfc187 0px 30px 55px, #feffde 0px -5px 30px, #b69957 0px 1px 6px, #ece7b3 0px 5px 13px, #eed292 0px 0px 5px;
+    }
+    75%{
+        box-shadow: #dfc187 0px 15px 60px, #feffde 0px -30px 32px, #b69957 0px 4px 6px, #ece7b3 0px 10px 11px, #eed292 0px -8px 5px;
+    }
+    100%{
+        box-shadow: #dfc187 0px 30px 55px, #feffde 0px -5px 30px, #b69957 0px 1px 6px, #ece7b3 0px 5px 13px, #eed292 0px 0px 5px;
+    }
+}
+
+@keyframes mythicalCard {
+    0% {
+        box-shadow: #7b0001 0px 30px 55px, #ff2928 0px -12px 30px, #603479 0px 4px 6px, #212529 0px 12px 13px, #d93c6b 0px -3px 5px;
+    }
+    25%{
+        box-shadow: #7b0001 0px 15px 60px, #ff2928 0px -30px 32px, #603479 0px 4px 6px, #212529 0px 10px 11px, #d93c6b 0px -8px 5px;
+    }
+    50%{
+        box-shadow: #7b0001 0px 30px 55px, #ff2928 0px -12px 30px, #603479 0px 4px 6px, #212529 0px 12px 13px, #d93c6b 0px -3px 5px;
+    }
+    75%{
+        box-shadow: #7b0001 0px 15px 60px, #ff2928 0px -30px 32px, #603479 0px 4px 6px, #212529 0px 10px 11px, #d93c6b 0px -8px 5px;
+    }
+    100%{
+        box-shadow: #7b0001 0px 30px 55px, #ff2928 0px -12px 30px, #603479 0px 4px 6px, #212529 0px 12px 13px, #d93c6b 0px -3px 5px;
+    }
+}
+
+@keyframes shinyCard {
+    0% {
+        box-shadow: #011f4b 0px 30px 55px, #03396c 0px -5px 30px, #005b96 0px 1px 6px, #6497b1 0px 5px 13px, #b3cde0 0px 0px 5px;
+    }
+    25%{
+        box-shadow: #011f4b 0px 15px 60px, #03396c 0px -30px 32px, #005b96 0px 4px 6px, #6497b1 0px 10px 11px, #b3cde0 0px -8px 5px;
+    }
+    50%{
+        box-shadow: #011f4b 0px 30px 55px, #03396c 0px -5px 30px, #005b96 0px 1px 6px, #6497b1 0px 5px 13px, #b3cde0 0px 0px 5px;
+    }
+    75%{
+        box-shadow: #011f4b 0px 15px 60px, #03396c 0px -30px 32px, #005b96 0px 4px 6px, #6497b1 0px 10px 11px, #b3cde0 0px -8px 5px;
+    }
+    100%{
+        box-shadow: #011f4b 0px 30px 55px, #03396c 0px -5px 30px, #005b96 0px 1px 6px, #6497b1 0px 5px 13px, #b3cde0 0px 0px 5px;
+    }
+}
+  

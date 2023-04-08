@@ -28,7 +28,8 @@ interface IPokemonData {
     stats : IPokemonStats[],
     types : IPokemonType[],
     other : any,
-    versions : any
+    versions : any,
+    weight : number
 }
 
 export default IPokemonData;

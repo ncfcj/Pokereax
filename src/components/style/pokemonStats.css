@@ -1,0 +1,17 @@
+.custom-tooltip{
+    background-color: lightgrey;
+    border-radius: 5px;
+    border: 1px solid gray;
+    padding: 5px;
+    font-family: PokemonGb; 
+    font-size: 0.5rem;
+}
+
+.recharts-legend-item { 
+    font-family: PokemonGb; 
+    font-size: 0.6rem;
+}
+
+.recharts-legend-icon{
+    display: none;
+}

@@ -6,13 +6,14 @@ interface PokemonTypeProps {
 }
 
 export const PokemonType = (props : PokemonTypeProps) => {
+    const basePath = import.meta.env.BASE_URL; 
 
     const recuperarEstiloTipo = (tipo : string) => {
         return `${tipo}Gradiente`;
     }
     
     const recuperarCaminhoImagemTipo = (tipo : string) => {
-        return `types/${tipo}.svg`;
+        return `${basePath}types/${tipo}.svg`;
     }
     
     const iconStyle: React.CSSProperties = {

@@ -8,8 +8,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { PokemonDescriptionButton } from "./pokemonDescriptionButton";
 import { PokemonImage } from "./pokemonImage";
-import IPokemonStats from "../interfaces/IPokemonStats";
 import { PokemonStats } from "./pokemonStats";
+import { PokemonType } from "./pokemonType";
+import { PokeballLoading } from "./pokeballLoading";
 
 export const PokemonDescription = () => {
     const location = useLocation();
@@ -26,6 +27,8 @@ export const PokemonDescription = () => {
     
     const [nextPokemonDataUrl, setNextPokemonDataUrl] = useState<string>("");
     const [previousPokemonDataUrl, setPreviousPokemonDataUrl] = useState<string>("");
+
+    const [randomNumber, setRandomNumber] = useState<number>(0);
 
     //#endregion
 
@@ -95,6 +98,7 @@ export const PokemonDescription = () => {
     useEffect(() => {
         getPokemonData();
         getPokemonSpecies();
+        setRandomNumber(Math.floor((Math.random() * 300) + 1));
     }, [locationPokemonName]);
 
     return (
@@ -103,17 +107,31 @@ export const PokemonDescription = () => {
             <div className="siteBody">
                 <PokemonDescriptionButton pokemonDataUrl={previousPokemonDataUrl} isNextPokemon={false}></PokemonDescriptionButton>
                 <div className="pokemonDescription">
-                    <div className="pokemonTitle">
+                    <div className={`pokemonTitle ${randomNumber >= 99 && randomNumber <= 100 ? "shiny" : ""} ${pokemonSpecies.is_legendary ? "legendary" : ""} ${pokemonSpecies.is_mythical ? "mythical" : ""}`}>
                         <p className="title">{capitalizeFirstWord(pokemonData.name)}</p>
-                        <PokemonImage imagePath={Object.keys(pokemonData).length == 0 ? "" : pokemonData.sprites.front_default}></PokemonImage>
+                        <PokemonImage imagePath={Object.keys(pokemonData).length == 0 ? "" : randomNumber >= 99 && randomNumber <= 100 ? pokemonData.sprites.front_shiny : pokemonData.sprites.front_default}></PokemonImage>
                     </div>
                     <div className="pokemonDescriptionStats">
                         <PokemonStats pokemonStats={pokemonData.stats}></PokemonStats>
                     </div>
+                    <div className="aboutPokemon">
+                        <div className="pokemonTypes">
+                            {pokemonData.types != undefined ? pokemonData.types.map(type => {
+                                return <PokemonType tipo={type.type.name}></PokemonType>
+                            }) : <PokeballLoading></PokeballLoading>}
+                        </div>
+                        <div className="pokemonTrivia">
+                            <p>Weight: {pokemonData.weight / 10} Kg</p>
+                            <p>Height: {pokemonData.height * 10} Cm</p>
+                        </div>
+                    </div>
+                    <div className="flavorTexts">
+                        
+                    </div>
                 </div>
                 <PokemonDescriptionButton pokemonDataUrl={nextPokemonDataUrl} isNextPokemon={true}></PokemonDescriptionButton>
             </div>
-            <PokedexFooter isGenZero={true} margin={0}></PokedexFooter>
+            <PokedexFooter isGenZero={false} margin={0}></PokedexFooter>
         </div>
     );
 }
