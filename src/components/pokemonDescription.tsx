@@ -13,13 +13,16 @@ import { PokemonType } from "./pokemonType";
 import { PokeballLoading } from "./pokeballLoading";
 
 export const PokemonDescription = () => {
+    const pokemonTotalCount = 1008;
+    const firstPokemonId = 1;
+
+    //#region ReactRouter Location Handling
     const location = useLocation();
     const locationPokemonData : IPokemonData = location.state?.data;
     const locationPokemonSpecies : IPokemonSpecies = location.state?.species;
+    const locationRandomNumber : number = location.state?.randomNumber;
     const locationPokemonName : string = location.pathname.replaceAll("/pokemon/", "");
-
-    const pokemonTotalCount = 1008;
-    const firstPokemonId = 1;
+    //#endregion
 
     //#region States
     const [pokemonData, setPokemonData] = useState<IPokemonData>({} as IPokemonData);
@@ -98,7 +101,7 @@ export const PokemonDescription = () => {
     useEffect(() => {
         getPokemonData();
         getPokemonSpecies();
-        setRandomNumber(Math.floor((Math.random() * 300) + 1));
+        setRandomNumber(locationRandomNumber == undefined ? Math.floor((Math.random() * 300) + 1) : locationRandomNumber);
     }, [locationPokemonName]);
 
     return (

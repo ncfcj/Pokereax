@@ -48,7 +48,7 @@ export const PokemonCard = (props : PokemonCard) => {
         return <PokeballLoading></PokeballLoading>;
         
     return (
-        <Link to={`/pokemon/${pokemonData.name}`} state={{ data : pokemonData, species : pokemonSpeciesData}} className={`pokemonCard ${randomNumber >= 99 && randomNumber <= 100 ? "shiny" : ""} ${pokemonSpeciesData.is_legendary ? "legendary" : "" } ${pokemonSpeciesData.is_mythical ? "mythical" : ""}`}>
+        <Link to={`/pokemon/${pokemonData.name}`} state={{ data : pokemonData, species : pokemonSpeciesData, randomNumber : randomNumber}} className={`pokemonCard ${randomNumber >= 99 && randomNumber <= 100 ? "shiny" : ""} ${pokemonSpeciesData.is_legendary ? "legendary" : "" } ${pokemonSpeciesData.is_mythical ? "mythical" : ""}`}>
             <PokemonCardHeader PokemonName={pokemonData.name}></PokemonCardHeader>
             <div className='pokeballBelt'>
                 <div className='pokeballButton'>
