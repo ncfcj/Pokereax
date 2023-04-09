@@ -38,10 +38,6 @@
 }
 
 @media (max-width: 1024px){
-    .footer{
-        max-width: 1024px;
-    }
-
     .gitHubIcon {
         width: 23%;
         transform: scale(0.3);
@@ -49,31 +45,16 @@
 }
 
 @media (max-width: 843px){
-    .footer{
-        max-width: 843px;
-    }
 }
 
 @media (max-width: 768px){
-    .footer{
-        max-width: 768px;
-    }
 }
 
 @media (max-width: 425px){
-    .footer{
-        min-width: 425px;
-    }
 }
 
 @media (max-width: 375px){
-    .footer{
-        min-width: 375px;
-    }
 }
 
 @media (max-width: 320px){
-    .footer{
-        min-width: 320px;
-    }
 }
