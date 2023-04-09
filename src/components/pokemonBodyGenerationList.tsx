@@ -10,8 +10,9 @@ import { useLocation } from "react-router-dom";
 export const PokemonBodyGenerationList = () => {
     const [pokemonUrlList, setPokemonUrlList] = useState<IPokemonUrl[]>([] as IPokemonUrl[]);
     const [generation, setGeneration] = useState<number>(0);
-    const totalPokemonCount = 1008;
+    const [scrolled, setScrolled] = useState<boolean>(false);
 
+    const totalPokemonCount = 1008;
     const location = useLocation();
     const locationGeneration = location.state?.generation;
     
@@ -103,29 +104,50 @@ export const PokemonBodyGenerationList = () => {
       setGeneration(generation + 1);
     }
 
+    const handleScroll = () => {
+        if(window.pageYOffset >= 20) {
+          setScrolled(true)
+        } else {
+          setScrolled(false)
+        }
+    }
+
     useEffect(() => { 
         getPokemonData();
+        window.addEventListener('scroll', handleScroll, { passive: true });
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
     }, [generation])
 
     return (
         <div>
             <PokedexHeader></PokedexHeader>
             <div className='cardListBody'>
-                <select 
-                  value={generation} 
-                  onChange={(x) => setGeneration(parseInt(x.target.value))}
-                  className='generationSelect'>
-                    <option value={0}>Selecione uma geração</option>
-                    <option value={1}>Geração 1 - Kanto</option>
-                    <option value={2}>Geração 2 - Johto</option>
-                    <option value={3}>Geração 3 - Hoenn</option>
-                    <option value={4}>Geração 4 - Sinnoh</option>
-                    <option value={5}>Geração 5 - Unova</option>
-                    <option value={6}>Geração 6 - Kalos</option>
-                    <option value={7}>Geração 7 - Alola</option>
-                    <option value={8}>Geração 8 - Galar</option>
-                    <option value={9}>Geração 9 - Paldea</option>
-                </select>
+                <div className={`searchFilter ${scrolled ? 'searchFilter-scrolled' : ""}`}>
+                    <button 
+                      onClick={previousGeneration} 
+                      className={`leftSearchButton genButtonSearch search ${scrolled ? 'search-scrolled' : ""}`}>{"<"}</button>
+                    <select 
+                      value={generation} 
+                      onChange={(x) => setGeneration(parseInt(x.target.value))}
+                      className={`generationSelect ${scrolled ? 'generationSelect-scrolled' : ""}`}>
+                        <option value={0}>Selecione uma geração</option>
+                        <option value={1}>Geração 1 - Kanto</option>
+                        <option value={2}>Geração 2 - Johto</option>
+                        <option value={3}>Geração 3 - Hoenn</option>
+                        <option value={4}>Geração 4 - Sinnoh</option>
+                        <option value={5}>Geração 5 - Unova</option>
+                        <option value={6}>Geração 6 - Kalos</option>
+                        <option value={7}>Geração 7 - Alola</option>
+                        <option value={8}>Geração 8 - Galar</option>
+                        <option value={9}>Geração 9 - Paldea</option>
+                    </select>
+                    <button 
+                      onClick={nextGeneration}
+                      className={`rightSearchButton genButtonSearch search ${scrolled ? 'search-scrolled' : ""}`}>{">"}</button>
+                </div>
                 <div className='CardListContainer'>
                   <button 
                       onClick={previousGeneration} 
@@ -136,7 +158,7 @@ export const PokemonBodyGenerationList = () => {
                       className='rightButton genButton'>{">"}</button>
                 </div>
             </div>
-            <PokedexFooter isGenZero={generation == 0}></PokedexFooter>
+            <PokedexFooter isGenZero={false}></PokedexFooter>
         </div>    
     );
 }

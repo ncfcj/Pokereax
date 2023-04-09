@@ -66,23 +66,44 @@
     box-shadow: #011f4b 0px 30px 55px, #03396c 0px -5px 30px, #005b96 0px 1px 6px, #6497b1 0px 5px 13px, #b3cde0 0px 0px 5px;
 }
 
-@media (max-width: 1000px) {
+
+@media (max-width: 1024px){
     .pokemonCard {
-        flex: 33%;
+        flex: 34%;
     }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 843px){
     .pokemonCard {
-        flex: 50%;
+        flex: 34%;
     }
 }
 
-@media(max-width: 350px){
-    .pokemonCard{
+@media (max-width: 768px){
+    .pokemonCard {
+        flex: 51%;
+    }
+}
+
+@media (max-width: 425px){
+    .pokemonCard {
+        flex: 51%;
         max-width: 300px;
     }
 }
+
+@media (max-width: 375px){
+    .pokemonCard {
+        flex: 51%;
+    }
+}
+
+@media (max-width: 320px){
+    .pokemonCard {
+        flex: 51%;
+    }
+}
+
 
 @keyframes legendaryCard {
     0% {

@@ -6,7 +6,7 @@ export const PokedexHeader = () => {
     const [isScrolled, setScrolled] = useState(false);
 
     const handleScroll = () => {
-        if(window.pageYOffset > 80) {
+        if(window.pageYOffset > 20) {
           setScrolled(true)
         } else {
           setScrolled(false)
@@ -22,13 +22,13 @@ export const PokedexHeader = () => {
     }, [])
     
     return (
-        <div className={`headerDiv`}>
+        <div className={`headerDiv ${isScrolled ? 'headerDiv-scrolled' : ""}`}>
             <div className={`header ${isScrolled ? 'header-scrolled' : ""}`}>
                 <Link to={"/"} state={{generation : 0}}>
                     <h1 className="headerTitle">PokeReax</h1>
                 </Link>
             </div>
-            <div className="navbar"></div>
+            <div className={`navbar ${isScrolled ? 'navbar-scrolled' : ""}`}></div>
         </div>
     )
 }

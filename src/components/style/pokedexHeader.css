@@ -3,29 +3,31 @@
     width: 100%;
     background-color: red;
     height: 80%;
-    transition: height 1s;
+    transition: height .5s;
     flex-flow: row nowrap;
     justify-content: flex-start;
 }
 
 .navbar {
-    top: 0;
     width: 100%;
     height: 20%;
     background-color: black;
 }
 
 .headerDiv {
-    margin-bottom: 1rem;
     position: sticky;
     top: 0;
     z-index: 9999999;
-    min-width: 100%;
     height: 8rem;
+    background-color: red;
+}
+
+.headerDiv-scrolled {
+    height: 4rem;
 }
 
 .header-scrolled {
-    height: 50%;
+    height: 4rem;
 }
 
 .headerTitle{
@@ -37,4 +39,29 @@
     align-items: center;
     justify-content: center;
     height: 100%;
+}
+
+.navbar-scrolled{
+    height: 40%;
+}
+
+@media (max-width: 1024px){
+    .header-scrolled {
+        height: 5rem;
+    }
+}
+
+@media (max-width: 768px){
+}
+
+@media (max-width: 425px){
+    .header-scrolled {
+        height: 6rem;
+    }
+}
+
+@media (max-width: 375px){
+}
+
+@media (max-width: 320px){
 }

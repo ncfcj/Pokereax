@@ -7,9 +7,11 @@
     text-align: center;
     justify-content: center;
   }
-  
+
   .generationSelect {
-    margin-bottom: 3rem;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    z-index: 99999;
   }
   
   .genButton{
@@ -22,7 +24,7 @@
     transform: translateY(21rem);
     color: white;
     font-size: larger;
-    margin-right: 1rem;;
+    z-index: 9;
   }
   
   .leftButton{
@@ -32,24 +34,116 @@
   .rightButton{
     background-color: red;
   }
+
+  .leftSearchButton{
+    background-color: black;
+    border: 1px solid white;
+    padding-right: 8%;
+  }
+  
+  .rightSearchButton{
+    background-color: red;
+    border: 1px solid white;
+    padding-right: 8%;
+  }
   
   .cardListBody{
     min-height: 80%;
   }
-  
-  @media (max-width: 700px){
-    .CardListContainer {
-      padding: 0 2% 0 2%;
-      gap: 0;
-    }
+
+  .searchFilter{
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    margin-bottom: 1.5rem;
+    transition: top 0.5s;
+    border-bottom: 1px solid black;
+    gap: 3%;
+  }
+
+  .search {
+    display: none;
   }
   
-  @media(max-width: 478px){
+  .genButtonSearch {
+    height: 30%;
+    width: 5%;
+    color: white;
+    font-size: large;
+    z-index: 9;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+    text-align: center;
+  }
+
+  .searchFilter-scrolled{
+    top:9%;
+  }
+
+  @media (max-width: 1024px){
+    .generationSelect{
+      margin-top: 2%;
+      margin-bottom: 2%;
+    }
+
+    .generationSelect-scrolled {
+      margin-top: 2%;
+      margin-bottom: 2%;
+    }
+
+    .searchFilter-scrolled{
+      top:11%;
+    }
+  }
+
+  @media (max-width: 768px){
+    .generationSelect{
+      margin-top: 3%;
+      margin-bottom: 3%;
+    }
+
+    .generationSelect-scrolled {
+      margin-top: 3%;
+      margin-bottom: 3%;
+    }
+
+    .searchFilter-scrolled{
+      top:11%;
+    }
+  }
+
+  @media (max-width: 425px){
     .genButton{
       display: none;
     }
-  
-    .CardListContainer{
-      margin-bottom: 2rem;
+
+    .generationSelect{
+      margin-top: 5%;
+      margin-bottom: 5%;
     }
+
+    .generationSelect-scrolled {
+      margin-top: 7%;
+      margin-bottom: 5%;
+    }
+
+    .search{
+      display:block !important;
+      margin-top: 5%;
+      margin-bottom: 5%;
+    }
+
+    .search-scrolled{
+      margin-top: 7%;
+      margin-bottom: 5%;
+    }
+  }
+
+  @media (max-width: 375px){
+  }
+
+  @media (max-width: 320px){
   }

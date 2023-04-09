@@ -1,4 +1,48 @@
 .imageSizing{
-    width: 87%;
+    width: 70%;
     height: 87%;
 }
+
+@media (max-width: 1024px){
+    .imageSizing{
+        width: 70%;
+        height: 87%;
+    }
+}
+
+@media (max-width: 843px){
+    .imageSizing{
+        width: 70%;
+        height: 87%;
+    }
+}
+
+@media (max-width: 768px){
+    .imageSizing{
+        width: 65%;
+        height: 87%;
+    }
+}
+
+@media (max-width: 425px){
+    .imageSizing{
+        width: 70%;
+        height: 87%;
+    }
+}
+
+@media (max-width: 375px){
+    .imageSizing{
+        width: 70%;
+        height: 87%;
+    }
+}
+
+@media (max-width: 320px){
+    .imageSizing{
+        width: 70%;
+        height: 87%;
+    }
+    
+}
+
