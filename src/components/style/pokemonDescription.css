@@ -26,7 +26,8 @@
     flex-flow: row nowrap;
     justify-content: space-around;
     height: 100%;
-    margin-top: 0.4%;
+    padding-top: 2.1%;
+    padding-bottom: 2.46%;
 }
 
 .container{
