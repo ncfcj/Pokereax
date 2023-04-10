@@ -11,6 +11,8 @@ import { PokemonImage } from "./pokemonImage";
 import { PokemonStats } from "./pokemonStats";
 import { PokemonType } from "./pokemonType";
 import { PokeballLoading } from "./pokeballLoading";
+import { PokemonFlavorTextList } from "./pokemonFlavorTextList";
+import { PokemonRegion } from "./pokemonRegion";
 
 export const PokemonDescription = () => {
     const pokemonTotalCount = 1008;
@@ -112,7 +114,7 @@ export const PokemonDescription = () => {
                 <div className="pokemonDescription">
                     <div className={`pokemonTitle ${randomNumber >= 99 && randomNumber <= 100 ? "shiny" : ""} ${pokemonSpecies.is_legendary ? "legendary" : ""} ${pokemonSpecies.is_mythical ? "mythical" : ""}`}>
                         <p className="title">{capitalizeFirstWord(pokemonData.name)}</p>
-                        <PokemonImage imagePath={Object.keys(pokemonData).length == 0 ? "" : randomNumber >= 99 && randomNumber <= 100 ? pokemonData.sprites.front_shiny : pokemonData.sprites.front_default}></PokemonImage>
+                        <img className="imageDescription" src={Object.keys(pokemonData).length == 0 ? "" : randomNumber >= 99 && randomNumber <= 100 ? pokemonData.sprites.front_shiny : pokemonData.sprites.front_default}></img>
                     </div>
                     <div className="pokemonDescriptionStats">
                         <PokemonStats pokemonStats={pokemonData.stats}></PokemonStats>
@@ -129,7 +131,10 @@ export const PokemonDescription = () => {
                         </div>
                     </div>
                     <div className="flavorTexts">
-                        
+                        <PokemonFlavorTextList FlavorTextList={pokemonSpecies.flavor_text_entries}></PokemonFlavorTextList>
+                    </div>
+                    <div className="regions">
+                        <PokemonRegion locationUrl={""}></PokemonRegion>
                     </div>
                 </div>
                 <PokemonDescriptionButton pokemonDataUrl={nextPokemonDataUrl} isNextPokemon={true}></PokemonDescriptionButton>

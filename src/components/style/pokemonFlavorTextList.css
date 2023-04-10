@@ -1,0 +1,11 @@
+.flavorText{
+    font-family: PokemonGb;
+    color: black;
+    font-size: 0.5rem;
+}
+
+.flavorTextListContainer{
+    text-align: left;
+    line-height: 1em;
+    line-break: auto;
+}
