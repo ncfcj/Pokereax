@@ -21,8 +21,8 @@ export const PokemonFlavorTextList = (props : IPokemonFlavorTextList) => {
 
         var flavorTextSet = new Set<string>();
         props.FlavorTextList.forEach((flavorText) => {
-            if(flavorText.language.name == language)
-                flavorTextSet.add(flavorText.flavor_text);
+            if(flavorText.language?.name == language)
+                flavorTextSet.add(flavorText.flavor_text!);
         });
 
         var flavorTextArray = Array.from(flavorTextSet.values());
@@ -35,8 +35,8 @@ export const PokemonFlavorTextList = (props : IPokemonFlavorTextList) => {
 
     return(
         <ol className="flavorTextListContainer">
-            {flavorTexts.map(flavorText => {
-                return <li className="flavorText">{flavorText}<br/><br/></li>
+            {flavorTexts.map((flavorText, i) => {
+                return <li key={i} className="flavorText">{flavorText}<br/><br/></li>
             })}
         </ol>
     )

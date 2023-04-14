@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { redirect, useLocation, useNavigate } from "react-router-dom";
 import { PokedexFooter } from "./pokedexFooter";
 import "./style/pokemonDescription.css";
 import IPokemonData from "../interfaces/IPokemonData";
@@ -7,14 +7,14 @@ import { PokedexHeader } from "./pokedexHeader";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { PokemonDescriptionButton } from "./pokemonDescriptionButton";
-import { PokemonImage } from "./pokemonImage";
 import { PokemonStats } from "./pokemonStats";
 import { PokemonType } from "./pokemonType";
 import { PokeballLoading } from "./pokeballLoading";
 import { PokemonFlavorTextList } from "./pokemonFlavorTextList";
-import { PokemonRegion } from "./pokemonRegion";
+import { PokemonMove } from "./pokemonMove";
 
 export const PokemonDescription = () => {
+    let navigate = useNavigate();
     const pokemonTotalCount = 1008;
     const firstPokemonId = 1;
 
@@ -59,25 +59,30 @@ export const PokemonDescription = () => {
 
             return;
         }
+
+        try{
+            const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${locationPokemonName}`);
+            setPokemonData(res.data);
+    
+            if (res.data.id == pokemonTotalCount){
+                setNextPokemonDataUrl(`https://pokeapi.co/api/v2/pokemon/${firstPokemonId}`);
+                setPreviousPokemonDataUrl(`https://pokeapi.co/api/v2/pokemon/${res.data.id - 1}`);
+                return;
+            }
         
-        const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${locationPokemonName}`);
-        setPokemonData(res.data);
-
-        if (res.data.id == pokemonTotalCount){
-            setNextPokemonDataUrl(`https://pokeapi.co/api/v2/pokemon/${firstPokemonId}`);
-            setPreviousPokemonDataUrl(`https://pokeapi.co/api/v2/pokemon/${res.data.id - 1}`);
-            return;
-        }
-
-        if (res.data.id == firstPokemonId){
+            if (res.data.id == firstPokemonId){
+                setNextPokemonDataUrl(`https://pokeapi.co/api/v2/pokemon/${res.data.id + 1}`);
+                setPreviousPokemonDataUrl(`https://pokeapi.co/api/v2/pokemon/${pokemonTotalCount}`);
+                return;
+            }
+        
             setNextPokemonDataUrl(`https://pokeapi.co/api/v2/pokemon/${res.data.id + 1}`);
-            setPreviousPokemonDataUrl(`https://pokeapi.co/api/v2/pokemon/${pokemonTotalCount}`);
-            return;
+            setPreviousPokemonDataUrl(`https://pokeapi.co/api/v2/pokemon/${res.data.id - 1}`);
         }
-
-        setNextPokemonDataUrl(`https://pokeapi.co/api/v2/pokemon/${res.data.id + 1}`);
-        setPreviousPokemonDataUrl(`https://pokeapi.co/api/v2/pokemon/${res.data.id - 1}`);
-
+        catch(err){
+            return navigate("/");
+        }
+        
         return;
     }
 
@@ -110,7 +115,13 @@ export const PokemonDescription = () => {
         <div className="container">
             <PokedexHeader></PokedexHeader>
             <div className="siteBody">
-                <PokemonDescriptionButton pokemonDataUrl={previousPokemonDataUrl} isNextPokemon={false}></PokemonDescriptionButton>
+                <div className="reducedPokemonButtons">
+                    <PokemonDescriptionButton pokemonDataUrl={previousPokemonDataUrl} isNextPokemon={false}></PokemonDescriptionButton>
+                    <PokemonDescriptionButton pokemonDataUrl={nextPokemonDataUrl} isNextPokemon={true}></PokemonDescriptionButton>
+                </div>
+                <div className="previousPokemonButton">
+                    <PokemonDescriptionButton pokemonDataUrl={previousPokemonDataUrl} isNextPokemon={false}></PokemonDescriptionButton>
+                </div>
                 <div className="pokemonDescription">
                     <div className={`pokemonTitle ${randomNumber >= 99 && randomNumber <= 100 ? "shiny" : ""} ${pokemonSpecies.is_legendary ? "legendary" : ""} ${pokemonSpecies.is_mythical ? "mythical" : ""}`}>
                         <p className="title">{capitalizeFirstWord(pokemonData.name)}</p>
@@ -122,7 +133,7 @@ export const PokemonDescription = () => {
                     <div className="aboutPokemon">
                         <div className="pokemonTypes">
                             {pokemonData.types != undefined ? pokemonData.types.map(type => {
-                                return <PokemonType tipo={type.type.name}></PokemonType>
+                                return <PokemonType key={type.type.name} tipo={type.type.name}></PokemonType>
                             }) : <PokeballLoading></PokeballLoading>}
                         </div>
                         <div className="pokemonTrivia">
@@ -130,14 +141,18 @@ export const PokemonDescription = () => {
                             <p>Height: {pokemonData.height * 10} Cm</p>
                         </div>
                     </div>
-                    <div className="flavorTexts">
-                        <PokemonFlavorTextList FlavorTextList={pokemonSpecies.flavor_text_entries}></PokemonFlavorTextList>
+                    <div className="moves">
+                            { pokemonData.moves != undefined ? pokemonData.moves.map(x => {
+                                return <PokemonMove key={x.move.name} moveUrl={x.move.url}></PokemonMove>
+                            }) : <PokeballLoading></PokeballLoading> }
                     </div>
-                    <div className="regions">
-                        <PokemonRegion locationUrl={""}></PokemonRegion>
+                    <div className="flavorTexts">
+                        <PokemonFlavorTextList key="flavorTexts" FlavorTextList={pokemonSpecies.flavor_text_entries}></PokemonFlavorTextList>
                     </div>
                 </div>
-                <PokemonDescriptionButton pokemonDataUrl={nextPokemonDataUrl} isNextPokemon={true}></PokemonDescriptionButton>
+                <div className="nextPokemonButton">
+                    <PokemonDescriptionButton pokemonDataUrl={nextPokemonDataUrl} isNextPokemon={true}></PokemonDescriptionButton>
+                </div>
             </div>
             <PokedexFooter isGenZero={false} margin={0}></PokedexFooter>
         </div>

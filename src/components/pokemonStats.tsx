@@ -74,7 +74,6 @@ export const PokemonStats = (props: IPokemonStatsProps) => {
         ));
 
         setData(statArray);
-        console.log(statArray);
     }    
 
     useEffect(() => {

@@ -1,9 +1,9 @@
 .previousPokemon{
-    width: 18%;
+    width: 100%;
 }
 
 .nextPokemon{
-    width: 18%;
+    width: 100%;
 }
 
 .pokemonButton{
@@ -41,52 +41,61 @@
 }
 
 @media (max-width: 768px){
-    .name{
-        font-size: 50%;
+    .pokemonButton{
+        height: 100%;
+        width: 100%;
+    }
+
+    .previousPokemon{
+        width: 50%;
+    }
+
+    .nextPokemon{
+        width: 50%;
     }
 }
 
 @media (max-width: 425px){
     .pokemonButton{
-        width: 20%;
-        height: 10%;
+        height: 100%;
+        width: 100%;
     }
 
-    .pokemonButton PokemonImage {
-        display: none;
+    .previousPokemon{
+        width: 50%;
     }
 
-    .name {
-        display: none;
+    .nextPokemon{
+        width: 50%;
     }
 }
 
 @media (max-width: 375px){
     .pokemonButton{
-        width: 10%;
-        height: 10%;
+        height: 100%;
+        width: 100%;
     }
 
-    .pokemonButton PokemonImage {
-        display: none;
+    .previousPokemon{
+        width: 50%;
     }
 
-    .name {
-        display: none;
+    .nextPokemon{
+        width: 50%;
     }
 }
 
 @media (max-width: 320px){
     .pokemonButton{
-        width: 10%;
-        height: 10%;
+        height: 100%;
+        width: 100%;
     }
 
-    .pokemonButton PokemonImage {
-        display: none;
+    .previousPokemon{
+        width: 50%;
     }
 
-    .name {
-        display: none;
+    .nextPokemon{
+        width: 50%;
     }
 }

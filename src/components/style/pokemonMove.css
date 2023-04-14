@@ -1,0 +1,79 @@
+.moveContainer{
+    display: flex;
+    align-items: center;
+    flex-flow: row wrap;
+    flex: 1 0 49%;
+    height: 20%;
+    width: 30%;
+    margin-left: 1%;
+}
+
+.move{
+    display: flex;
+    flex-flow: row nowrap;
+    border: 1px solid black;
+    border-radius: 4px;
+    justify-content: flex-start;
+    gap: 5%;
+    width: 90%;
+    height: 80%;
+    padding-left: 4%;
+    align-items: center;
+}
+
+.move:hover{
+    opacity: 80%;
+    background-color: lightgray;
+}
+
+.moveName{
+    font-family: PokemonGb;
+    font-size: 0.7rem;
+}
+
+.tooltipMove{
+    display: flex;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 4px;
+    flex-flow: column nowrap;
+    width: 15rem;
+    height: fit-content;
+    gap: 3%;
+}
+
+.tooltipTitle{
+    color: black;
+    font-family: PokemonGb;
+    display: flex;
+    font-size: 0.9rem;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 2%;
+    width: 100%;
+    gap: 5%;
+    margin-top: 3%;
+}
+
+.tooltipTitle img{
+    width: 3rem;
+    height: 1.5rem;
+}
+
+.tooltipBody{
+    color: black;
+    font-family: PokemonGb;
+    margin-left: 3%;
+}
+
+@media(max-width: 375px){
+    .moveName{
+        font-size: 0.6rem;
+    }
+}
+
+@media(max-width: 320px){
+    .moveName{
+        font-size: 0.49rem;
+    }
+}
