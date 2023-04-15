@@ -29,6 +29,7 @@
 .moveName{
     font-family: PokemonGb;
     font-size: 0.7rem;
+    color: black;
 }
 
 .tooltipMove{
